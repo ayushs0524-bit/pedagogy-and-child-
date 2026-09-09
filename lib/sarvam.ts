@@ -81,7 +81,7 @@ export async function sarvamASR(audioBase64: string, mimeType: string) {
   // into a Blob before sending.
   const bytes = Buffer.from(audioBase64, "base64");
   const form = new FormData();
-  form.append("model", "saarika:v2");
+  form.append("model", "saaras:v3");
   form.append("language_code", "hi-IN");
   form.append("file", new Blob([bytes], { type: mimeType }), "question.wav");
 
