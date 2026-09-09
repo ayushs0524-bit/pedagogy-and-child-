@@ -64,7 +64,7 @@ export async function sarvamTTS(text: string, languageCode = "hi-IN") {
       inputs: [text],
       target_language_code: languageCode,
       model: "bulbul:v3",
-      speaker: "meera",
+      speaker: "priya",
       output_audio_codec: "wav",
     }),
   });
