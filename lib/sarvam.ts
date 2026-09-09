@@ -9,7 +9,7 @@ function key() {
   return k;
 }
 
-export async function sarvamChat(systemPrompt: string, userPrompt: string, maxTokens = 600) {
+export async function sarvamChat(systemPrompt: string, userPrompt: string, maxTokens = 1200) {
   const res = await fetch(`${SARVAM_BASE}/v1/chat/completions`, {
     method: "POST",
     headers: {
@@ -24,6 +24,7 @@ export async function sarvamChat(systemPrompt: string, userPrompt: string, maxTo
       ],
       temperature: 0.2,
       max_tokens: maxTokens,
+      reasoning_effort: null,
     }),
   });
 
