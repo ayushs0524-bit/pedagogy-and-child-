@@ -9,7 +9,7 @@ function key() {
   return k;
 }
 
-export async function sarvamChat(systemPrompt: string, userPrompt: string, maxTokens = 600) {
+export async function sarvamChat(systemPrompt: string, userPrompt: string, maxTokens = 1200) {
   const res = await fetch(`${SARVAM_BASE}/v1/chat/completions`, {
     method: "POST",
     headers: {
@@ -24,6 +24,7 @@ export async function sarvamChat(systemPrompt: string, userPrompt: string, maxTo
       ],
       temperature: 0.2,
       max_tokens: maxTokens,
+      reasoning_effort: null,
     }),
   });
 
@@ -63,7 +64,7 @@ export async function sarvamTTS(text: string, languageCode = "hi-IN") {
       inputs: [text],
       target_language_code: languageCode,
       model: "bulbul:v3",
-      speaker: "meera",
+      speaker: "priya",
       output_audio_codec: "wav",
     }),
   });
@@ -81,7 +82,7 @@ export async function sarvamASR(audioBase64: string, mimeType: string) {
   // into a Blob before sending.
   const bytes = Buffer.from(audioBase64, "base64");
   const form = new FormData();
-  form.append("model", "saarika:v2");
+  form.append("model", "saaras:v3");
   form.append("language_code", "hi-IN");
   form.append("file", new Blob([bytes], { type: mimeType }), "question.wav");
 
